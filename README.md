@@ -1,13 +1,13 @@
-#windows_domain_controller
+# windows_domain_controller #
 
 ####Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with [Modulename]](#setup)
-    * [What [Modulename] affects](#what-[modulename]-affects)
+3. [Setup - The basics of getting started with windows_domain_controller](#setup)
+    * [What windows_domain_controller affects](#what-[modulename]-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with [Modulename]](#beginning-with-[Modulename])
+    * [Beginning with windows_domain_controller](#beginning-with-[Modulename])
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -37,6 +37,7 @@ Class: windows_domain_controller
 
 Example - Create a new forest
 
+<pre>
 #  class {'windows_domain_controller':
 #   domain        => 'forest',      #REQUIRED#
 #   domainname    => 'test.local',  #REQUIRED#
@@ -46,7 +47,9 @@ Example - Create a new forest
 #   logpath       => 'e:\windows\ntds',
 #   sysvolpath    => 'e:\sysvol'
 #   }
+</pre>
 
+<pre>
 Parameters:
   $domain        # Installation type { forest | tree | child | replica | readonly }
   $domainname    # FQDN
@@ -57,6 +60,7 @@ Parameters:
   $logpath       # Active Directory log path
   $sysvolpath    # Active Directory sysvol path
   $dsrmpassword  # Directory Service Recovery Mode password
+</pre>
 
 ##Reference
 
@@ -72,4 +76,4 @@ Supported on Windows Server 2008R2 and Server 2012
 
 Contributors:
 
-        Martez Reed <martez.reed@greenreedtech.com>
+Martez Reed <martez.reed@greenreedtech.com>
