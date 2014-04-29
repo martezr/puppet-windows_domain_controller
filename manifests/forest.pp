@@ -18,13 +18,13 @@ class windows_domain_controller::forest (
 
 # If the operating is server 2012 then run the appropriate powershell commands if not revert back to the cmd commands
   
-  if $kernel_ver =~ /^6\.2/ {
+  if $kernel_ver =~ /^6\.2|^6\.3/ {
    
    # Deploy Server 2012 Active Directory
    exec {'Deploy ADDS':
-      command   => "${windows_domain_controller::param::powershell::command} -Command \"Import-Module ADDSDeployment; Install-ADDSForest -Force -DomainName $domainname -DomainMode $domainlevel -ForestMode $forestlevel -DatabasePath $databasepath -LogPath $logpath -SysvolPath $sysvolpath -SafeModeAdministratorPassword (convertto-securestring '$dsrmpassword' -asplaintext -force)\"",
-      path      => "${windows_domain_controller::param::powershell::path};${::path}",
-      
+      command   => "Import-Module ADDSDeployment; Install-ADDSForest -Force -DomainName $domainname -DomainMode $domainlevel -ForestMode $forestlevel -DatabasePath $databasepath -LogPath $logpath -SysvolPath $sysvolpath -SafeModeAdministratorPassword (convertto-securestring '$dsrmpassword' -asplaintext -force)",
+      provider  => powershell, 
+      unless    => test,
        }
 }
   else {
@@ -34,5 +34,4 @@ class windows_domain_controller::forest (
        path     => 'C:\windows\sysnative',
 }
        }
-       
        }

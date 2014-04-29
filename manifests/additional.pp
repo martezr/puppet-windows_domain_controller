@@ -17,27 +17,22 @@ class windows_domain_controller::additional (
   $userdomain    = undef, # Existing domain name 
 )
 {
-#  include 'windows_domain_controller::param::powershell'
-#  
-#
-#    # If the operating is server 2012 then run the appropriate powershell commands if not revert back to the cmd commands
-#  
-#  if $kernel_ver =~ /^6\.2/ {
-#   # Deploy Server 2012 Active Directory
-#  exec {'Deploy ADDS':
-#      command   => "${windows_domain_controller::param::powershell::command} -Command \"Import-Module ADDSDeployment; Install-ADDSDomainController -DomainName $replicadomainname -SafeModeAdministratorPassword $dsrmpassword\"",
-#      path      => "${windows_domain_controller::param::powershell::path};${::path}",
-#      
-#       }
-#}
-#  else {
-# # Deploy Server 2008 Active Directory
-# exec {'Deploy ADDS 2008':
-#       command  => "cmd.exe /c dcpromo /unattend /InstallDNS:yes /confirmGC:$globalcatalog /ReplicaOrNewDomain:$installtype /replicaDomainDNSName:$replicadomainname /databasePath:$databasepath /logPath:$logpath /sysvolPath:$sysvolpath /UserDomain:$userdomain /UserName:$username /Password:$password /SafeModeAdminPassword:$dsrmpassword",
-#       path     => 'C:\windows\sysnative',
-#}
-#       }
   
+    # If the operating is server 2012 then run the appropriate powershell commands if not revert back to the cmd commands
   
-  
+  if $kernel_ver =~ /^6\.2|^6\.3/ {
+   # Deploy Server 2012/2012 R2 Active Directory
+  exec {'Deploy Additional 2012':
+      command   => "Import-Module ADDSDeployment; Install-ADDSDomainController -DomainName $replicadomainname -DatabasePath $databasepath -LogPath $logpath -SafeModeAdministratorPassword $dsrmpassword -SysvolPath $sysvolpath",
+      provider  => powershell,
+      unless    => "(Get-WindowsFeature -name adds).Installed", 
+       }
+}
+  else {
+ # Deploy Server 2008 Active Directory
+ exec {'Deploy Additional 2008':
+       command  => "cmd.exe /c dcpromo /unattend /InstallDNS:yes /confirmGC:$globalcatalog /ReplicaOrNewDomain:$installtype /replicaDomainDNSName:$replicadomainname /databasePath:$databasepath /logPath:$logpath /sysvolPath:$sysvolpath /UserDomain:$userdomain /UserName:$username /Password:$password /SafeModeAdminPassword:$dsrmpassword",
+       path     => 'C:\windows\sysnative',
+}
+       }  
  }

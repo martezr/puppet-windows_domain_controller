@@ -35,22 +35,22 @@
 
 class windows_domain_controller (
   $domain            = undef,  # Installation type { forest | tree | child | replica | readonly }
-  $domainname        = undef, # FQDN
-  $netbiosname       = undef, # NetBIOS name
-  $domainlevel       = '2', # Domain level {2 - Server 2003 | 3 - Server 2008 | 4 - Server 2008 R2 | 5 - Server 2012}
-  $forestlevel       = '2', # Forest level {2 - Server 2003 | 3 - Server 2008 | 4 - Server 2008 R2 | 5 - Server 2012}
-  $installdns        = 'yes', # Add DNS Server Role
-  $globalcatalog     = 'yes', # Add Global Catalog functionality
-  $sitename          = undef, # Site Name
-  $domaintype        = undef, # Type of domain {Tree | Child | Forest} (New domain tree in an existing forest, child domain, or new forest)
-  $parentdomainname  = undef, # Parent FQDN
-  $installtype       = undef, # New domain or replica of existing domain {replica | domain}
-  $replicadomainname = undef, # Existing domain FQDN
-  $secure_string_pwd = undef, # Server 2012 secure dsrm password
+  $domainname        = undef,  # FQDN
+  $netbiosname       = undef,  # NetBIOS name
+  $domainlevel       = '2',    # Domain level {2 - Server 2003 | 3 - Server 2008 | 4 - Server 2008 R2 | 5 - Server 2012}
+  $forestlevel       = '2',    # Forest level {2 - Server 2003 | 3 - Server 2008 | 4 - Server 2008 R2 | 5 - Server 2012}
+  $installdns        = 'yes',  # Add DNS Server Role
+  $globalcatalog     = 'yes',  # Add Global Catalog functionality
+  $sitename          = undef,  # Site Name
+  $domaintype        = undef,  # Type of domain {Tree | Child | Forest} (New domain tree in an existing forest, child domain, or new forest)
+  $parentdomainname  = undef,  # Parent FQDN
+  $installtype       = undef,  # New domain or replica of existing domain {replica | domain}
+  $replicadomainname = undef,  # Existing domain FQDN
+  $secure_string_pwd = undef,  # Server 2012 secure dsrm password
   
   # Installation Directories
-  $databasepath  = 'c:\\windows\\ntds', # Active Directory database path
-  $logpath       = 'c:\\windows\\ntds', # Active Directory log path
+  $databasepath  = 'c:\\windows\\ntds',   # Active Directory database path
+  $logpath       = 'c:\\windows\\ntds',   # Active Directory log path
   $sysvolpath    = 'c:\\windows\\sysvol', # Active Directory sysvol path
   
   # User Information
@@ -63,9 +63,6 @@ class windows_domain_controller (
 ) 
 
 {
-  include 'windows_domain_controller::param::powershell'
-  #include 'windows_domain_controller::install'
-    
   # Select the desired domain type
    case $domain {
         'forest':       { include windows_domain_controller::forest }
@@ -74,6 +71,5 @@ class windows_domain_controller (
         'readonly':     { include windows_domain_controller::rodc }
         'tree':         { include windows_domain_controller::tree }
         default:        { }
-}
-  
+} 
 }
