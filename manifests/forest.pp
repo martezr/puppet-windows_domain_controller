@@ -30,8 +30,9 @@ class windows_domain_controller::forest (
   else {
  # Deploy Server 2008 Active Directory
  exec {'Deploy ADDS 2008':
-       command  => "cmd.exe /c dcpromo /unattend /InstallDNS:yes /confirmGC:$globalcatalog /NewDomain:forest /NewDomainDNSName:$domainname /domainLevel:$domainlevel /forestLevel:$forestlevel /ReplicaOrNewDomain:domain /databasePath:$databasepath /logPath:$logpath /sysvolPath:$sysvolpath /SafeModeAdminPassword:$dsrmpassword",
-       path     => 'C:\windows\sysnative',
+       command => "cmd.exe /c dcpromo /unattend /InstallDNS:yes /confirmGC:$globalcatalog /NewDomain:forest /NewDomainDNSName:$domainname /domainLevel:$domainlevel /forestLevel:$forestlevel /ReplicaOrNewDomain:domain /databasePath:$databasepath /logPath:$logpath /sysvolPath:$sysvolpath /SafeModeAdminPassword:$dsrmpassword",
+       path    => 'C:\windows\sysnative',
+       unless  => "sc \\\\${::fqdn} query ntds",
 }
        }
        }
