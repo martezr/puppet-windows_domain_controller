@@ -1,7 +1,8 @@
-# Create a read only domain controller
-
+# == Class: windows_domain_controller::rodc
+#
+# Create a read only domain controller (does not appear to do anything at all)
+#
 class windows_domain_controller::rodc (
-  
   $installtype        = $windows_domain_controller::installtype,
   $replicadomainname  = $windows_domain_controller::replicadomainname,
   $globalcatalog      = $windows_domain_controller::globalcatalog,
@@ -10,10 +11,11 @@ class windows_domain_controller::rodc (
   $sysvolpath         = $windows_domain_controller::sysvolpath,
   $dsrmpassword       = $windows_domain_controller::dsrmpassword,
   $kernel_ver         = $windows_domain_controller::kernel_ver,
-  
+
   # User Information
-  $username      = undef, # Username to join existing domain
-  $password      = undef, # Password to join existing domain
-  $userdomain    = undef, # Existing domain name 
-)
-{}
+  $username           = undef, # Username to join existing domain
+  $password           = undef, # Password to join existing domain
+  $userdomain         = undef, # Existing domain name
+) {
+
+}
