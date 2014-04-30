@@ -77,3 +77,4 @@ Supported on Windows Server 2008R2 and Server 2012
 Contributors:
 
 Martez Reed <martez.reed@greenreedtech.com>
+Garrett Honeycutt <code@garretthoneycutt.com>
