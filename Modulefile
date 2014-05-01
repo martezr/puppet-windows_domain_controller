@@ -1,5 +1,5 @@
 name    'martezr-windows_domain_controller'
-version '0.1.0'
+version '0.1.1'
 source 'https://github.com/martezr/puppet-windows_domain_controller.git'
 author 'Martez Reed'
 license 'Apache License, Version 2.0'

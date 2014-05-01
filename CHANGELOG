@@ -1,5 +1,13 @@
-2-25-2014
-----------------
+0.1.1 - 2014-04-29
+------------------
+  * Make deploy of ADDS on 2008 idempotent
+  * Style fixes
+  * Relax versioning in metadata
+  * Add Apache Software License v2.0
+  * Add metadata
+
+2014-02-25
+----------
 1. Updated install.pp to incorporate the powershell provider and removed dependency on param.pp file
 2. Updated install.pp to add support for Server 2012 R2 with the updated kernel version
 3. Added unless checks to install.pp powershell commands to improve idempotence
@@ -7,7 +15,7 @@
 5. Updated forest.pp to incorporate the powershell provider and removed dependency on param.pp file
 6. Updated forest.pp to add support for Server 2012 R2 with the updated kernel version
 
-1-3-2014
-----------------
+2014-03-01
+----------
 1. Updated README.markdown document to cleanup the documentation
 2. Added a Changelog
