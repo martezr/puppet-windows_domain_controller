@@ -1,13 +1,39 @@
 {
-  "name": "martez-windows_domain_controller",
+  "name": "martezr-windows_domain_controller",
   "version": "0.1.0",
-  "summary": "",
-  "author": "",
-  "description": "",
-  "dependencies": [],
-  "types": [],
-  "checksums": {},
-  "source": "",
-  "project_page": "",
+  "summary": "Puppet module to install active directory domain services",
+  "author": "Martez Reed",
+  "description": "Puppet module to install active directory domain services",
+  "dependencies": [
+    {
+      "name": "joshcooper/powershell"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 3.2.0"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "CHANGELOG": "b84de18860fec3474cb5c25d0ad82627",
+    "Gemfile": "6992d521994d948eb6e48acd733a07bf",
+    "Modulefile": "c2a02dee602866e8c2461fab85166e64",
+    "README.md": "c869dbdb3e4a4a90bc4992295b6dc203",
+    "Rakefile": "8ff6a0f7db638421d1742c5d365d0266",
+    "manifests/additional.pp": "a86fea9c3ea78514573b6204abb4ab32",
+    "manifests/child.pp": "0f88e473a645d12a6d9038106a2b6e54",
+    "manifests/forest.pp": "0d3a0e43dc8d6b6d6dd8bacff68b19a1",
+    "manifests/init.pp": "71096842f7ba63adab43253ee99e5781",
+    "manifests/install.pp": "4d465350d7239a58b8bbdf64a9cefe70",
+    "manifests/rodc.pp": "d65936e16b3711bdaeeb641aa47626ef",
+    "manifests/tree.pp": "8db26f897882badd191ac71b8db871c6",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    "tests/init.pp": "00d483519f240acb373201a99a8de832"
+  },
+  "source": "https://github.com/martezr/puppet-windows_domain_controller.git",
+  "project_page": "https://github.com/martezr/puppet-windows_domain_controller",
   "license": ""
 }
