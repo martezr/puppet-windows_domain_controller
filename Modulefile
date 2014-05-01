@@ -8,4 +8,4 @@ description 'Puppet module to install active directory domain services'
 project_page 'https://github.com/martezr/puppet-windows_domain_controller'
 
 dependency 'joshcooper/powershell'
-dependency 'puppetlabs/stdlib', '4.1.0'
+dependency 'puppetlabs/stdlib', '>= 3.2.0'
