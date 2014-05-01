@@ -19,7 +19,8 @@
   "checksums": {
     "CHANGELOG": "b84de18860fec3474cb5c25d0ad82627",
     "Gemfile": "6992d521994d948eb6e48acd733a07bf",
-    "Modulefile": "c2a02dee602866e8c2461fab85166e64",
+    "LICENSE": "2522b03e26a5ad329670204eab4c129c",
+    "Modulefile": "59ec6bc09045d98b4f8644807174a30b",
     "README.md": "c869dbdb3e4a4a90bc4992295b6dc203",
     "Rakefile": "8ff6a0f7db638421d1742c5d365d0266",
     "manifests/additional.pp": "a86fea9c3ea78514573b6204abb4ab32",
@@ -35,5 +36,5 @@
   },
   "source": "https://github.com/martezr/puppet-windows_domain_controller.git",
   "project_page": "https://github.com/martezr/puppet-windows_domain_controller",
-  "license": ""
+  "license": "Apache License, Version 2.0"
 }
