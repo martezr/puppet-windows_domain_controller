@@ -49,6 +49,8 @@ Example - Create a new forest
 #   }
 </pre>
 
+## Parameters
+
 <pre>
 Parameters:
   $domain        # Installation type { forest | tree | child | replica | readonly }
@@ -61,6 +63,15 @@ Parameters:
   $sysvolpath    # Active Directory sysvol path
   $dsrmpassword  # Directory Service Recovery Mode password
 </pre>
+
+### windows_domain_controller::forest parameters
+
+timeout
+-------
+Integer of timeout to pass to exec resource. Joining a domain often takes longer than the default 300 seconds. Recommend setting this to `0`.
+
+- *Default*: undef
+
 
 ##Reference
 
