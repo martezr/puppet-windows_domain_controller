@@ -13,6 +13,7 @@ class windows_domain_controller::forest (
   $domainlevel        = $windows_domain_controller::domainlevel,
   $forestlevel        = $windows_domain_controller::forestlevel,
   $secure_string_pwd  = $windows_domain_controller::secure_string_pwd,
+  $timeout            = undef,
 ) {
 
   # If the operating is server 2012 then run the appropriate powershell commands if not revert back to the cmd commands
@@ -22,6 +23,7 @@ class windows_domain_controller::forest (
       command  => "Import-Module ADDSDeployment; Install-ADDSForest -Force -DomainName ${domainname} -DomainMode ${domainlevel} -ForestMode ${forestlevel} -DatabasePath ${databasepath} -LogPath ${logpath} -SysvolPath ${sysvolpath} -SafeModeAdministratorPassword (convertto-securestring '${dsrmpassword}' -asplaintext -force)",
       provider => powershell,
       unless   => test,
+      timeout  => $timeout,
     }
   } else {
     # Deploy Server 2008 Active Directory
@@ -29,6 +31,7 @@ class windows_domain_controller::forest (
       command => "cmd.exe /c dcpromo /unattend /InstallDNS:yes /confirmGC:${globalcatalog} /NewDomain:forest /NewDomainDNSName:${domainname} /domainLevel:${domainlevel} /forestLevel:${forestlevel} /ReplicaOrNewDomain:domain /databasePath:${databasepath} /logPath:${logpath} /sysvolPath:${sysvolpath} /SafeModeAdminPassword:${dsrmpassword}",
       path    => 'C:\windows\sysnative',
       unless  => "sc \\\\${::fqdn} query ntds",
+      timeout => $timeout,
     }
   }
 }
