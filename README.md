@@ -1,6 +1,6 @@
 # windows_domain_controller #
 
-####Table of Contents
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
@@ -13,25 +13,25 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
-##Overview
+## Overview
 
 Install Windows Active Directory Domain Services
 
-##Module Description
+## Module Description
 
 This module is used to automate the installation and configuration of the windows active directory domain services role
 
-##Setup
+## Setup
 
-###What windows_domain_controller affects
+### What windows_domain_controller affects
 
 The module utilizes paramaters provided by the dcpromo command line executable and the powershell cmdlets for Server 2012
 
-###Setup Requirements
+### Setup Requirements
  
 Depends on the following modules:
 
-##Usage
+## Usage
 
 Class: windows_domain_controller
 
@@ -73,17 +73,17 @@ Integer of timeout to pass to exec resource. Joining a domain often takes longer
 - *Default*: undef
 
 
-##Reference
+## Reference
 
-##Limitations
+## Limitations
 
 The module only supports creating a new forest at this time
 
 Supported on Windows Server 2008R2 and Server 2012
 
-##Development
+## Development
 
-##Release Notes/Contributors/Etc
+## Release Notes/Contributors/Etc
 
 Contributors:
 
