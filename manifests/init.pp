@@ -16,14 +16,14 @@
 #
 # New Forest
 #
-#  class {'windows_domain_controller':
-#   domain        => 'forest',      #REQUIRED#
-#   domainname    => 'test.local',  #REQUIRED#
-#   domainlevel   => '4',
-#   forestlevel   => '4',
-#   databasepath  => 'e:\ntds,
-#   logpath       => 'e:\windows\ntds',
-#   sysvolpath    => 'e:\sysvol'
+#  class { '::windows_domain_controller':
+#   domain       => 'forest',      #REQUIRED#
+#   domainname   => 'test.local',  #REQUIRED#
+#   domainlevel  => '4',
+#   forestlevel  => '4',
+#   databasepath => 'e:\ntds,
+#   logpath      => 'e:\windows\ntds',
+#   sysvolpath   => 'e:\sysvol',
 #   }
 #
 #
@@ -58,11 +58,11 @@ class windows_domain_controller (
 
   # Select the desired domain type
   case $domain {
-    'forest':   { include windows_domain_controller::forest }
-    'child':    { include windows_domain_controller::child }
-    'replica':  { include windows_domain_controller::additional }
-    'readonly': { include windows_domain_controller::rodc }
-    'tree':     { include windows_domain_controller::tree }
+    'forest':   { include ::windows_domain_controller::forest }
+    'child':    { include ::windows_domain_controller::child }
+    'replica':  { include ::windows_domain_controller::additional }
+    'readonly': { include ::windows_domain_controller::rodc }
+    'tree':     { include ::windows_domain_controller::tree }
     default:    { fail("windows_domain_controller::domain is ${domain} and must match one of \'forest\', \'child\', \'replica\', \'readonly\', or \'tree\'.") }
   }
 }

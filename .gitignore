@@ -214,4 +214,29 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
+# Puppet
+spec/fixtures/manifests/*
+spec/fixtures/modules/*
 pkg/
+
+# Default .gitignore for Ruby
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+/Gemfile.lock
+/Gemfile.local
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
